@@ -7,11 +7,11 @@ require "subscribem/version"
 Gem::Specification.new do |s|
   s.name        = "subscribem"
   s.version     = Subscribem::VERSION
-  s.authors     = ["TODO: Ernane Sena"]
-  s.email       = ["TODO: ernane.sena@gmail.com"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of Subscribem."
-  s.description = "TODO: Description of Subscribem."
+  s.authors     = ["Ernane Sena"]
+  s.email       = ["ernane.sena@gmail.com"]
+  s.homepage    = "https://github.com/ernane/subscribem"
+  s.summary     = "Summary of Subscribem."
+  s.description = "Description of Subscribem."
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
@@ -19,4 +19,6 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", "~> 3.2.13"
 
   s.add_development_dependency "sqlite3"
+  s.add_development_dependency "rspec-rails"
+  s.add_development_dependency "capybara"
 end
