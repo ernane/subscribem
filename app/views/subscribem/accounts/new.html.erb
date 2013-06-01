@@ -6,7 +6,7 @@
     <%= account.text_field :name %>
   </p>
 
-<%= account.fields_for:owner do|owner| %>
+<%= account.fields_for :owner do |owner| %>
   <p>
     <%= owner.label :email %><br>
     <%= owner.text_field :email %>
