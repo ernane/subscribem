@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(:version => 20130603022619) do
     t.string   "subdomain"
   end
 
-  add_index "subscribem_accounts", ["subdomain"], :name => "index_subscribem_accounts_on_subdomain"
+  add_index "subscribem_accounts", ["subdomain"], :name => "index_subscribem_accounts_on_subdomain", :unique => true
 
   create_table "subscribem_users", :force => true do |t|
     t.string   "email"
