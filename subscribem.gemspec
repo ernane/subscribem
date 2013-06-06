@@ -16,12 +16,13 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
 
-  s.add_dependency "rails", "~> 3.2.13"
   s.add_dependency "bcrypt-ruby", '~> 3.0.1'
-  s.add_dependency "warden"
   s.add_dependency "dynamic_form"
+  s.add_dependency "rails", "~> 3.2.13"
+  s.add_dependency "warden"
 
-  s.add_development_dependency "sqlite3"
-  s.add_development_dependency "rspec-rails"
   s.add_development_dependency "capybara"
+  s.add_development_dependency "factory_girl"
+  s.add_development_dependency "rspec-rails"
+  s.add_development_dependency "sqlite3"
 end
