@@ -17,7 +17,7 @@ feature "Accounts" do
     success_message = "Your account has been successfully created."
     page.should have_content(success_message)
     page.should have_content("jhon@example.com")
-    page.current_url.should == "http://test.example.com"
+    page.current_url.should == "http://test.example.com/"
   end
 
   scenario "Ensure subdomain uniqueness" do
