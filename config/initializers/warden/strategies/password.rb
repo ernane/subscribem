@@ -1,3 +1,7 @@
+Rails.application.config.middleware.use Warden::Manager do |manager|
+  manager.default_strategies :password
+end
+
 Warden::Strategies.add(:password) do
   def subdomain
     ActionDispatch::Http::URL.extract_subdomains(request.host, 1)
