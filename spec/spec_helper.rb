@@ -5,6 +5,7 @@ require 'rspec/rails'
 require 'rspec/autorun'
 require 'capybara/rspec'
 require 'factory_girl'
+require 'database_cleaner'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -38,4 +39,35 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    Apartment::Database.reset
+    DatabaseCleaner.clean
+  end
+
+  config.after(:each) do
+    Apartment::Database.reset
+    DatabaseCleaner.clean
+    connection = ActiveRecord::Base.connection.raw_connection
+    schemas = connection.query(%Q{
+      SELECT 'drop schema ' || nspname || ' cascade;'
+      from pg_namespace
+      where nspname != 'public' AND
+      nspowner != (select oid from pg_roles where rolname = 'postgres');
+      })
+    schemas.each do |query|
+      connection.query(query.values.first)
+    end
+  end
 end
+
+Capybara.app_host = "http://example.com"
