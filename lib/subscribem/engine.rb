@@ -1,4 +1,5 @@
 require "warden"
+require "apartment"
 require "dynamic_form"
 
 module Subscribem
